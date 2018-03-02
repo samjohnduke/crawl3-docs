@@ -1,0 +1,49 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Introduction\n\n\nThe Crawl3 Web Crawler is a modular and distributeable web crawler capable of \nfetching, extracting and storing the results. It is written in Go and has been \ndesigned to enable extensibility without sacrificing scalability. \n\n\nComponents\n\n\nThere are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.\n\n\nThe Crawler consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea. \n\n\nThe Schedular is responsible for managing the \n\n\nThe Aggregator", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#introduction", 
+            "text": "The Crawl3 Web Crawler is a modular and distributeable web crawler capable of \nfetching, extracting and storing the results. It is written in Go and has been \ndesigned to enable extensibility without sacrificing scalability.", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#components", 
+            "text": "There are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.  The Crawler consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.   The Schedular is responsible for managing the   The Aggregator", 
+            "title": "Components"
+        }, 
+        {
+            "location": "/getting-started/", 
+            "text": "Getting Started\n\n\nTo get started with Crawl3, the first step is to have Go installed. You will need Go \n 1.7.\nYou can find out how to install Go at there website \ngolang.org/docs/install\n\nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.\n\n\nOnce you have Go installed, you can go get the application\n\n\n    go get -u github.com/samjohnduke/crawl3", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/getting-started/#getting-started", 
+            "text": "To get started with Crawl3, the first step is to have Go installed. You will need Go   1.7.\nYou can find out how to install Go at there website  golang.org/docs/install \nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.  Once you have Go installed, you can go get the application      go get -u github.com/samjohnduke/crawl3", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/about/about/", 
+            "text": "Objective\n\n\nWeb content scraping is a difficult task, and no framework or library that I have used \nhas felt \nright\n. They all solve the problem differently. I have written crawl3 as I want\na crawler to be written. Extensible, but with solid defaults and modular so that if I \nneed specific functionality, I don't need to rebuild the whole application, just a small\npart.", 
+            "title": "Objective"
+        }, 
+        {
+            "location": "/about/about/#objective", 
+            "text": "Web content scraping is a difficult task, and no framework or library that I have used \nhas felt  right . They all solve the problem differently. I have written crawl3 as I want\na crawler to be written. Extensible, but with solid defaults and modular so that if I \nneed specific functionality, I don't need to rebuild the whole application, just a small\npart.", 
+            "title": "Objective"
+        }, 
+        {
+            "location": "/about/license/", 
+            "text": "License\n\n\nCrawl3, and Crawl3-docs are licensed under the MIT license. \n\n\n\n\nCopyright 2017 Sam Duke\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", 
+            "title": "License"
+        }, 
+        {
+            "location": "/about/license/#license", 
+            "text": "Crawl3, and Crawl3-docs are licensed under the MIT license.    Copyright 2017 Sam Duke  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", 
+            "title": "License"
+        }
+    ]
+}
