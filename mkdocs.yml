@@ -1,7 +1,7 @@
 site_name: Crawl 3
 site_description: 'Crawl 3 User guide and documentation'
 site_author: 'Sam Duke'
-site_url: 'https://samjohnduke.github.io/crawl3-docs/'
+site_url: 'https://samjohnduke.github.io/crawl3-docs'
 
 # Repository
 repo_name: 'samjohnduke/crawl3-docs'
@@ -13,6 +13,15 @@ copyright: 'Copyright &copy; 2018 Sam Duke'
 pages: 
   - Home: index.md 
   - Getting Started: getting-started.md
+  - Introduction:
+    - Crawler: crawler.md
+    - Extractors: extractors.md
+    - Schedular: schedular.md
+    - Aggregator: aggregator.md
+    - Reporting: report-query.md
+  - Advanced: 
+      - Running: run.md
+  - FAQ: faq.md
   - About: 
     - Objective: about/about.md 
     - License: about/license.md
@@ -22,11 +31,13 @@ theme:
   name: 'material'
   language: 'en'
   palette:
-    primary: 'indigo'
-    accent: 'indigo'
+    primary: 'green'
+    accent: 'green'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+  feature:
+    tabs: false
 
 
 # Extensions
