@@ -2,28 +2,78 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Introduction\n\n\nThe Crawl3 Web Crawler is a modular and distributeable web crawler capable of \nfetching, extracting and storing the results. It is written in Go and has been \ndesigned to enable extensibility without sacrificing scalability. \n\n\nComponents\n\n\nThere are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.\n\n\nThe Crawler consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea. \n\n\nThe Schedular is responsible for managing the \n\n\nThe Aggregator", 
+            "text": "Introduction\n\n\nThe Crawl3 Web Crawler is a modular and distributeable web crawler capable of\nfetching, extracting and storing the results. It is written in Go and has been\ndesigned to enable extensibility without sacrificing scalability.\n\n\nI wrote Crawl3 becasue I needed a platform on which to add to and extend over time,\nbut without having everything built into one executeable. With Crawl3, you can setup the\ncore and then configure components and plugins later, for maximum flexibility.\n\n\nComponents\n\n\nThere are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.\n\n\nThe \nCrawler\n consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.\n\n\nCrawlers can run over any transport (such as http or a message bus) and are the only\nrequired piece of the puzzle. As a user of crawl3, you can do everything with just this\npiece.\n\n\nThe \nSchedular\n is responsible for managing the process of actually crawling the website.\nIts main function is to send out url crawl requests to the crawler that will perform and extraction\nof a webpage. By default it fires of one URL request per second and enqueues all urls found on each\npage, but the schedular is designed to be extended and can take different actions.\n\n\nThe \nAggregator\n listens to the crawler for successful extractions and records the data. \nIt provides a transformer interface for loading data as well as a query interface for getting\nthe data at a later point in time.\n\n\nQuick Start\n\n\nWith Go \n= 1.7 installed, go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nand then run the crawler.\n\n\nc3-crawler\n\n\n\n\n\nTo extract data from a url, use the included c3-crawler cmd client. \n\n\nc3-crawler-client https://google.com\n\n\n\n\n\nThis will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.\n\n\nTo read more information on what is going on read the \nIntroduction guide", 
             "title": "Home"
         }, 
         {
             "location": "/#introduction", 
-            "text": "The Crawl3 Web Crawler is a modular and distributeable web crawler capable of \nfetching, extracting and storing the results. It is written in Go and has been \ndesigned to enable extensibility without sacrificing scalability.", 
+            "text": "The Crawl3 Web Crawler is a modular and distributeable web crawler capable of\nfetching, extracting and storing the results. It is written in Go and has been\ndesigned to enable extensibility without sacrificing scalability.  I wrote Crawl3 becasue I needed a platform on which to add to and extend over time,\nbut without having everything built into one executeable. With Crawl3, you can setup the\ncore and then configure components and plugins later, for maximum flexibility.", 
             "title": "Introduction"
         }, 
         {
             "location": "/#components", 
-            "text": "There are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.  The Crawler consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.   The Schedular is responsible for managing the   The Aggregator", 
+            "text": "There are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.  The  Crawler  consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.  Crawlers can run over any transport (such as http or a message bus) and are the only\nrequired piece of the puzzle. As a user of crawl3, you can do everything with just this\npiece.  The  Schedular  is responsible for managing the process of actually crawling the website.\nIts main function is to send out url crawl requests to the crawler that will perform and extraction\nof a webpage. By default it fires of one URL request per second and enqueues all urls found on each\npage, but the schedular is designed to be extended and can take different actions.  The  Aggregator  listens to the crawler for successful extractions and records the data. \nIt provides a transformer interface for loading data as well as a query interface for getting\nthe data at a later point in time.", 
             "title": "Components"
         }, 
         {
+            "location": "/#quick-start", 
+            "text": "With Go  = 1.7 installed, go get the application  go get -u github.com/samjohnduke/crawl3/...  and then run the crawler.  c3-crawler  To extract data from a url, use the included c3-crawler cmd client.   c3-crawler-client https://google.com  This will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.  To read more information on what is going on read the  Introduction guide", 
+            "title": "Quick Start"
+        }, 
+        {
             "location": "/getting-started/", 
-            "text": "Getting Started\n\n\nTo get started with Crawl3, the first step is to have Go installed. You will need Go \n 1.7.\nYou can find out how to install Go at there website \ngolang.org/docs/install\n\nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.\n\n\nOnce you have Go installed, you can go get the application\n\n\n    go get -u github.com/samjohnduke/crawl3", 
+            "text": "Getting Started\n\n\nTo get started with Crawl3, the first step is to have Go installed. You will need Go \n 1.7.\nYou can find out how to install Go at there website \ngolang.org/docs/install\n\nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.\n\n\nOnce you have Go installed, you can go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nThis installs a few applications into the $GOPATH/bin directory. These include c3-crawler c3-crawler-client, c3-schedular and c3-aggregator. \nThese are the default binaries. They use the Nats message bus to communicate. The c3-crawler embeds a Nats server, as it is the only required piece. You can build your own crawler and use an external bus.\n\n\nStarting the minimal crawler\n\n\nTo start the minmalist web crawler turn on the c3-crawler \n\n\nc3-crawler\n\n\n\n\n\nTo test that it works correctly run the client using the c3-crawler-client.\n\n\nc3-crawler-client https://google.com/\n\n\n\n\n\nIf its all setup correctly, the client should output a list of crawl data. \n\n\nUsing the schedular and aggregator\n\n\nGetting the schedular started requires only running the c3-schedular binary \n\n\nc3-schedular\n\n\n\n\n\nThis schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.\n\n\nTo get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision \nhere\n\n\nFor that we need to install the database. Instructions can be found on there \nwebsite\n. \n\n\nOnce it has been installed, you can start the c3-aggregator \n\n\nc3-aggregator\n\n\n\n\n\nThe aggregator has a web interface that can be accessed at \nlocalhost:7778\n. You can then query the data and create reports.\n\n\nContinue on to read about each of the pieces function and how to use them to build your own web crawler", 
             "title": "Getting Started"
         }, 
         {
             "location": "/getting-started/#getting-started", 
-            "text": "To get started with Crawl3, the first step is to have Go installed. You will need Go   1.7.\nYou can find out how to install Go at there website  golang.org/docs/install \nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.  Once you have Go installed, you can go get the application      go get -u github.com/samjohnduke/crawl3", 
+            "text": "To get started with Crawl3, the first step is to have Go installed. You will need Go   1.7.\nYou can find out how to install Go at there website  golang.org/docs/install \nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.  Once you have Go installed, you can go get the application  go get -u github.com/samjohnduke/crawl3/...  This installs a few applications into the $GOPATH/bin directory. These include c3-crawler c3-crawler-client, c3-schedular and c3-aggregator. \nThese are the default binaries. They use the Nats message bus to communicate. The c3-crawler embeds a Nats server, as it is the only required piece. You can build your own crawler and use an external bus.", 
             "title": "Getting Started"
+        }, 
+        {
+            "location": "/getting-started/#starting-the-minimal-crawler", 
+            "text": "To start the minmalist web crawler turn on the c3-crawler   c3-crawler  To test that it works correctly run the client using the c3-crawler-client.  c3-crawler-client https://google.com/  If its all setup correctly, the client should output a list of crawl data.", 
+            "title": "Starting the minimal crawler"
+        }, 
+        {
+            "location": "/getting-started/#using-the-schedular-and-aggregator", 
+            "text": "Getting the schedular started requires only running the c3-schedular binary   c3-schedular  This schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.  To get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision  here  For that we need to install the database. Instructions can be found on there  website .   Once it has been installed, you can start the c3-aggregator   c3-aggregator  The aggregator has a web interface that can be accessed at  localhost:7778 . You can then query the data and create reports.  Continue on to read about each of the pieces function and how to use them to build your own web crawler", 
+            "title": "Using the schedular and aggregator"
+        }, 
+        {
+            "location": "/crawler/", 
+            "text": "", 
+            "title": "Crawler"
+        }, 
+        {
+            "location": "/extractors/", 
+            "text": "", 
+            "title": "Extractors"
+        }, 
+        {
+            "location": "/schedular/", 
+            "text": "", 
+            "title": "Schedular"
+        }, 
+        {
+            "location": "/aggregator/", 
+            "text": "", 
+            "title": "Aggregator"
+        }, 
+        {
+            "location": "/report-query/", 
+            "text": "", 
+            "title": "Reporting"
+        }, 
+        {
+            "location": "/run/", 
+            "text": "", 
+            "title": "Running"
+        }, 
+        {
+            "location": "/faq/", 
+            "text": "", 
+            "title": "FAQ"
         }, 
         {
             "location": "/about/about/", 

@@ -13,7 +13,7 @@
         <meta name="description" content="Crawl 3 User guide and documentation">
       
       
-        <link rel="canonical" href="https://samjohnduke.github.io/crawl3-docs/getting-started/">
+        <link rel="canonical" href="https://samjohnduke.github.io/crawl3-docs/run/">
       
       
         <meta name="author" content="Sam Duke">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Getting Started - Crawl 3</title>
+        <title>Running - Crawl 3</title>
       
     
     
@@ -99,10 +99,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#getting-started" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -125,7 +121,7 @@
                 Crawl 3
               </span>
               <span class="md-header-nav__topic">
-                Getting Started
+                Running
               </span>
             
           
@@ -252,56 +248,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Getting Started
-      </label>
-    
-    <a href="./" title="Getting Started" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting Started" class="md-nav__link">
       Getting Started
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#starting-the-minimal-crawler" title="Starting the minimal crawler" class="md-nav__link">
-    Starting the minimal crawler
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-the-schedular-and-aggregator" title="Using the schedular and aggregator" class="md-nav__link">
-    Using the schedular and aggregator
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -393,10 +344,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Advanced
@@ -412,11 +365,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../run/" title="Running" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="Running" class="md-nav__link md-nav__link--active">
       Running
     </a>
+    
   </li>
 
         
@@ -492,93 +452,17 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#starting-the-minimal-crawler" title="Starting the minimal crawler" class="md-nav__link">
-    Starting the minimal crawler
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-the-schedular-and-aggregator" title="Using the schedular and aggregator" class="md-nav__link">
-    Using the schedular and aggregator
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/samjohnduke/crawl3-docs/edit/master/docs/getting-started.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/samjohnduke/crawl3-docs/edit/master/docs/run.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
-<p>To get started with Crawl3, the first step is to have Go installed. You will need Go &gt; 1.7.
-You can find out how to install Go at there website <a href="https://golang.org/doc/install" target="_blank">golang.org/docs/install</a>
-and install the latest version for your operating system. Make sure that your go folders bin directory is in your path.</p>
-<p>Once you have Go installed, you can go get the application</p>
-<div class="codehilite"><pre><span></span>go get -u github.com/samjohnduke/crawl3/...
-</pre></div>
-
-
-<p>This installs a few applications into the $GOPATH/bin directory. These include c3-crawler c3-crawler-client, c3-schedular and c3-aggregator. 
-These are the default binaries. They use the Nats message bus to communicate. The c3-crawler embeds a Nats server, as it is the only required piece. You can build your own crawler and use an external bus.</p>
-<h2 id="starting-the-minimal-crawler">Starting the minimal crawler<a class="headerlink" href="#starting-the-minimal-crawler" title="Permanent link">&para;</a></h2>
-<p>To start the minmalist web crawler turn on the c3-crawler </p>
-<div class="codehilite"><pre><span></span>c3-crawler
-</pre></div>
-
-
-<p>To test that it works correctly run the client using the c3-crawler-client.</p>
-<div class="codehilite"><pre><span></span>c3-crawler-client https://google.com/
-</pre></div>
-
-
-<p>If its all setup correctly, the client should output a list of crawl data. </p>
-<h2 id="using-the-schedular-and-aggregator">Using the schedular and aggregator<a class="headerlink" href="#using-the-schedular-and-aggregator" title="Permanent link">&para;</a></h2>
-<p>Getting the schedular started requires only running the c3-schedular binary </p>
-<div class="codehilite"><pre><span></span>c3-schedular
-</pre></div>
-
-
-<p>This schedular will attempt to visit every page for added websites, when added via the
-the schedular client. It will respect the website and visit pages once every 5 seconds,
-per domain.</p>
-<p>To get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision <a href="../aggregator/">here</a></p>
-<p>For that we need to install the database. Instructions can be found on there <a href="https://docs.arangodb.com/3.3/Manual/GettingStarted/Installing/">website</a>. </p>
-<p>Once it has been installed, you can start the c3-aggregator </p>
-<div class="codehilite"><pre><span></span>c3-aggregator
-</pre></div>
-
-
-<p>The aggregator has a web interface that can be accessed at <code>localhost:7778</code>. You can then query the data and create reports.</p>
-<p>Continue on to read about each of the pieces function and how to use them to build your own web crawler</p>
+                  <h1>Running</h1>
+                
+                
                 
                   
                 
@@ -597,7 +481,7 @@ per domain.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../report-query/" title="Reporting" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -606,19 +490,19 @@ per domain.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                Reporting
               </span>
             </div>
           </a>
         
         
-          <a href="../crawler/" title="Crawler" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Crawler
+                FAQ
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

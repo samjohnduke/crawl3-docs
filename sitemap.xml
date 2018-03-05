@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://samjohnduke.github.io/crawl3-docs/</loc>
-     <lastmod>2018-03-02</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,59 @@
     
     <url>
      <loc>https://samjohnduke.github.io/crawl3-docs/getting-started/</loc>
-     <lastmod>2018-03-02</lastmod>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/crawler/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/extractors/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/schedular/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/aggregator/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/report-query/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/run/</loc>
+     <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>https://samjohnduke.github.io/crawl3-docs/faq/</loc>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,13 +73,13 @@
         
     <url>
      <loc>https://samjohnduke.github.io/crawl3-docs/about/about/</loc>
-     <lastmod>2018-03-02</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://samjohnduke.github.io/crawl3-docs/about/license/</loc>
-     <lastmod>2018-03-02</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

@@ -68,7 +68,7 @@
   
     
     
-    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="green">
   
     <svg class="md-svg">
       <defs>
@@ -275,6 +275,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
       
       
       
@@ -308,10 +315,142 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      About
+      Introduction
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="crawler/" title="Crawler" class="md-nav__link">
+      Crawler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="extractors/" title="Extractors" class="md-nav__link">
+      Extractors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="schedular/" title="Schedular" class="md-nav__link">
+      Schedular
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="aggregator/" title="Aggregator" class="md-nav__link">
+      Aggregator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="report-query/" title="Reporting" class="md-nav__link">
+      Reporting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Advanced
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Advanced
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="run/" title="Running" class="md-nav__link">
+      Running
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
         About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -373,6 +512,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
       
       
       
@@ -393,17 +539,47 @@
                 
                 
                 <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
-<p>The Crawl3 Web Crawler is a modular and distributeable web crawler capable of 
-fetching, extracting and storing the results. It is written in Go and has been 
-designed to enable extensibility without sacrificing scalability. </p>
+<p>The Crawl3 Web Crawler is a modular and distributeable web crawler capable of
+fetching, extracting and storing the results. It is written in Go and has been
+designed to enable extensibility without sacrificing scalability.</p>
+<p>I wrote Crawl3 becasue I needed a platform on which to add to and extend over time,
+but without having everything built into one executeable. With Crawl3, you can setup the
+core and then configure components and plugins later, for maximum flexibility.</p>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
 <p>There are 3 core components. The crawler, the schedular and the aggregator. 
 Each component is responsible for only it's piece, and can each be run separatly.</p>
-<p>The Crawler consists of a distributer and one of more (configurable) workers. Unlike
+<p>The <strong>Crawler</strong> consists of a distributer and one of more (configurable) workers. Unlike
 many web crawlers, the dispatcher only cares about the queue that it has and arranges
-work to be carried out as fast as possible, without care for if that is a wise idea. </p>
-<p>The Schedular is responsible for managing the </p>
-<p>The Aggregator </p>
+work to be carried out as fast as possible, without care for if that is a wise idea.</p>
+<p>Crawlers can run over any transport (such as http or a message bus) and are the only
+required piece of the puzzle. As a user of crawl3, you can do everything with just this
+piece.</p>
+<p>The <strong>Schedular</strong> is responsible for managing the process of actually crawling the website.
+Its main function is to send out url crawl requests to the crawler that will perform and extraction
+of a webpage. By default it fires of one URL request per second and enqueues all urls found on each
+page, but the schedular is designed to be extended and can take different actions.</p>
+<p>The <strong>Aggregator</strong> listens to the crawler for successful extractions and records the data. 
+It provides a transformer interface for loading data as well as a query interface for getting
+the data at a later point in time.</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>With Go &gt;= 1.7 installed, go get the application</p>
+<div class="codehilite"><pre><span></span>go get -u github.com/samjohnduke/crawl3/...
+</pre></div>
+
+
+<p>and then run the crawler.</p>
+<div class="codehilite"><pre><span></span>c3-crawler
+</pre></div>
+
+
+<p>To extract data from a url, use the included c3-crawler cmd client. </p>
+<div class="codehilite"><pre><span></span>c3-crawler-client https://google.com
+</pre></div>
+
+
+<p>This will write to the terminal some extracted information such as on page links, microdata and 
+html meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.</p>
+<p>To read more information on what is going on read the <a href="./crawler">Introduction guide</a></p>
                 
                   
                 
