@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Introduction\n\n\nThe Crawl3 Web Crawler is a modular and distributeable web crawler capable of\nfetching, extracting and storing the results. It is written in Go and has been\ndesigned to enable extensibility without sacrificing scalability.\n\n\nI wrote Crawl3 becasue I needed a platform on which to add to and extend over time,\nbut without having everything built into one executeable. With Crawl3, you can setup the\ncore and then configure components and plugins later, for maximum flexibility.\n\n\nComponents\n\n\nThere are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.\n\n\nThe \nCrawler\n consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.\n\n\nCrawlers can run over any transport (such as http or a message bus) and are the only\nrequired piece of the puzzle. As a user of crawl3, you can do everything with just this\npiece.\n\n\nThe \nSchedular\n is responsible for managing the process of actually crawling the website.\nIts main function is to send out url crawl requests to the crawler that will perform and extraction\nof a webpage. By default it fires of one URL request per second and enqueues all urls found on each\npage, but the schedular is designed to be extended and can take different actions.\n\n\nThe \nAggregator\n listens to the crawler for successful extractions and records the data. \nIt provides a transformer interface for loading data as well as a query interface for getting\nthe data at a later point in time.\n\n\nQuick Start\n\n\nWith Go \n= 1.7 installed, go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nand then run the crawler.\n\n\nc3-crawler\n\n\n\n\n\nTo extract data from a url, use the included c3-crawler cmd client. \n\n\nc3-crawler-client https://google.com\n\n\n\n\n\nThis will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.\n\n\nTo read more information on what is going on read the \nIntroduction guide", 
+            "text": "Introduction\n\n\nThe Crawl3 Web Crawler is a modular and distributeable web crawler capable of\nfetching, extracting and storing the results. It is written in Go and has been\ndesigned to enable extensibility without sacrificing scalability.\n\n\nI wrote Crawl3 becasue I needed a platform on which to add to and extend over time,\nbut without having everything built into one executeable. With Crawl3, you can setup the\ncore and then configure components and plugins later, for maximum flexibility.\n\n\nComponents\n\n\nThere are 3 core components. The crawler, the schedular and the aggregator. \nEach component is responsible for only it's piece, and can each be run separatly.\n\n\nThe \nCrawler\n consists of a distributer and one of more (configurable) workers. Unlike\nmany web crawlers, the dispatcher only cares about the queue that it has and arranges\nwork to be carried out as fast as possible, without care for if that is a wise idea.\n\n\nCrawlers can run over any transport (such as http or a message bus) and are the only\nrequired piece of the puzzle. As a user of crawl3, you can do everything with just this\npiece.\n\n\nThe \nSchedular\n is responsible for managing the process of actually crawling the website.\nIts main function is to send out url crawl requests to the crawler that will perform and extraction\nof a webpage. By default it fires of one URL request per second and enqueues all urls found on each\npage, but the schedular is designed to be extended and can take different actions.\n\n\nThe \nAggregator\n listens to the crawler for successful extractions and records the data. \nIt provides a transformer interface for loading data as well as a query interface for getting\nthe data at a later point in time.\n\n\nQuick Start\n\n\nWith Go \n= 1.7 installed, go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nand then run the crawler.\n\n\nc3-crawler\n\n\n\n\n\nTo extract data from a url, use the included c3-crawler cmd client. \n\n\nc3-crawler-client https://google.com\n\n\n\n\n\nThis will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.\n\n\nTo read more information on what is going on read the \nIntroduction guide\n.\n\n\nFor a more detailed guide to getting all the pieces connected, read the \nGetting Started\n page.", 
             "title": "Home"
         }, 
         {
@@ -17,12 +17,12 @@
         }, 
         {
             "location": "/#quick-start", 
-            "text": "With Go  = 1.7 installed, go get the application  go get -u github.com/samjohnduke/crawl3/...  and then run the crawler.  c3-crawler  To extract data from a url, use the included c3-crawler cmd client.   c3-crawler-client https://google.com  This will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.  To read more information on what is going on read the  Introduction guide", 
+            "text": "With Go  = 1.7 installed, go get the application  go get -u github.com/samjohnduke/crawl3/...  and then run the crawler.  c3-crawler  To extract data from a url, use the included c3-crawler cmd client.   c3-crawler-client https://google.com  This will write to the terminal some extracted information such as on page links, microdata and \nhtml meta tags (for open-graph data). By writing custom extractors you can add data you want to this list.  To read more information on what is going on read the  Introduction guide .  For a more detailed guide to getting all the pieces connected, read the  Getting Started  page.", 
             "title": "Quick Start"
         }, 
         {
             "location": "/getting-started/", 
-            "text": "Getting Started\n\n\nTo get started with Crawl3, the first step is to have Go installed. You will need Go \n 1.7.\nYou can find out how to install Go at there website \ngolang.org/docs/install\n\nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.\n\n\nOnce you have Go installed, you can go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nThis installs a few applications into the $GOPATH/bin directory. These include c3-crawler c3-crawler-client, c3-schedular and c3-aggregator. \nThese are the default binaries. They use the Nats message bus to communicate. The c3-crawler embeds a Nats server, as it is the only required piece. You can build your own crawler and use an external bus.\n\n\nStarting the minimal crawler\n\n\nTo start the minmalist web crawler turn on the c3-crawler \n\n\nc3-crawler\n\n\n\n\n\nTo test that it works correctly run the client using the c3-crawler-client.\n\n\nc3-crawler-client https://google.com/\n\n\n\n\n\nIf its all setup correctly, the client should output a list of crawl data. \n\n\nUsing the schedular and aggregator\n\n\nGetting the schedular started requires only running the c3-schedular binary \n\n\nc3-schedular\n\n\n\n\n\nThis schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.\n\n\nTo get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision \nhere\n\n\nFor that we need to install the database. Instructions can be found on there \nwebsite\n. \n\n\nOnce it has been installed, you can start the c3-aggregator \n\n\nc3-aggregator\n\n\n\n\n\nThe aggregator has a web interface that can be accessed at \nlocalhost:7778\n. You can then query the data and create reports.\n\n\nContinue on to read about each of the pieces function and how to use them to build your own web crawler", 
+            "text": "Getting Started\n\n\nTo get started with Crawl3, the first step is to have Go installed. You will need Go \n 1.7.\nYou can find out how to install Go at there website \ngolang.org/docs/install\n\nand install the latest version for your operating system. Make sure that your go folders bin directory is in your path.\n\n\nOnce you have Go installed, you can go get the application\n\n\ngo get -u github.com/samjohnduke/crawl3/...\n\n\n\n\n\nThis installs a few applications into the $GOPATH/bin directory. These include c3-crawler c3-crawler-client, c3-schedular and c3-aggregator. \nThese are the default binaries. They use the Nats message bus to communicate. The c3-crawler embeds a Nats server, as it is the only required piece. You can build your own crawler and use an external bus.\n\n\nStarting the minimal crawler\n\n\nTo start the minmalist web crawler turn on the c3-crawler \n\n\nc3-crawler\n\n\n\n\n\nTo test that it works correctly run the client using the c3-crawler-client.\n\n\nc3-crawler-client https://google.com/\n\n\n\n\n\nIf its all setup correctly, the client should output a list of crawl data. \n\n\nUsing the schedular and aggregator\n\n\nGetting the schedular started requires only running the c3-schedular binary \n\n\nc3-schedular\n\n\n\n\n\nThis schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.\n\n\nTo get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision \nhere\n\n\nFor that we need to install the database. Instructions can be found on there \nwebsite\n. \n\n\nOnce it has been installed, you can start the c3-aggregator \n\n\nc3-aggregator\n\n\n\n\n\nThe aggregator has a web interface that can be accessed at \nlocalhost:7778\n. You can then query the data and create reports.\n\n\nContinue on to read about each of the pieces functionality and how to use them to build your own web crawler.", 
             "title": "Getting Started"
         }, 
         {
@@ -37,18 +37,123 @@
         }, 
         {
             "location": "/getting-started/#using-the-schedular-and-aggregator", 
-            "text": "Getting the schedular started requires only running the c3-schedular binary   c3-schedular  This schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.  To get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision  here  For that we need to install the database. Instructions can be found on there  website .   Once it has been installed, you can start the c3-aggregator   c3-aggregator  The aggregator has a web interface that can be accessed at  localhost:7778 . You can then query the data and create reports.  Continue on to read about each of the pieces function and how to use them to build your own web crawler", 
+            "text": "Getting the schedular started requires only running the c3-schedular binary   c3-schedular  This schedular will attempt to visit every page for added websites, when added via the\nthe schedular client. It will respect the website and visit pages once every 5 seconds,\nper domain.  To get the aggregrator going, we have used ArangoDB for storing and quering data. Read more about this decision  here  For that we need to install the database. Instructions can be found on there  website .   Once it has been installed, you can start the c3-aggregator   c3-aggregator  The aggregator has a web interface that can be accessed at  localhost:7778 . You can then query the data and create reports.  Continue on to read about each of the pieces functionality and how to use them to build your own web crawler.", 
             "title": "Using the schedular and aggregator"
         }, 
         {
             "location": "/crawler/", 
-            "text": "", 
+            "text": "Crawler\n\n\nThe core function of any web scraper is to go out and collect a webpage and perform some \nanalysis on it, hopefully returning meaning content. The crawler performs this specific \nfunction. By utilising a dispatch process for workers, with a process for custom extractors\nso that users of the system can customize the behaviour of the crawler, the core functions\nare abstracted from them in a way that enable the crawler is be scaled both horizontally \nand vertically to maximise throughput\n\n\nPublic Interfaces\n\n\nService\n\n\nThe service interface has 3 methods, \nCrawl\n, \nCrawlAsync\n, \nCrawlProgress\n. These methods recieve the \nrequest from another component (such as the schedular) to crawl a url. CrawlProgress will return the \ncurrent progress of a crawl, as it may be queued when underload. There is only one implementation of \nthe service, however you could in theory write your own.\n\n\nTransport\n\n\nThe transport receives a service and binds it to the outside world, translating the transport layer into \na call to the appropriate service method. There is currently only one implementation of the transport via\nthe nats messaging bus, however a http interface is in progress.\n\n\nClient\n\n\nThe client mirrors the service, and connects the to transport. The transport then passes on the call \nto the service and returns the result. The client can be used by the schedulars, or by other tools\nto crawl webpages. \n\n\nListener\n\n\nThe listener provides a tap on the crawl that receives complete crawls through the transport. The \ncurrent implementation is via nats\n\n\nInstrument\n\n\nThe instrument interface provides a means to monitor the crawler, and the other components but included\nhere for simplicity. The interface has 3 methods, modeled off the prometheus monitoring tool, and can \nconnected to prometheus as an implementation of instrument.\n\n\nWorker\n\n\nA worker DOES. It has a Start, Stop and Do method that performs work. You can customize the behaviour, but\nby default it crawls and extracts data from the url provided to the Do method.\n\n\nImportant Structs\n\n\nThere are a number of important structs that are used throughout the crawler.\n\n\nDefaultWorker\n\n\nThe base unit for crawling, it registers itself for work and then when chosen, will execute\na crawl. \n\n\nWorkerOpts\n\n\nThe default options passed to a worker on creation through the worker factory. Includes\nlogger, instrument and extractors\n\n\nDispatcher\n\n\nReceives work from the service and hands it off to workers that it is responsible for managing.\n\n\nCrawl\n\n\nA data struct that holds all the information about a url received, the time it takes to complete \nand data that it collects\n\n\nCreating the service\n\n\nThe Default service has the following signature. \n\n\nNew\n(\nopts\n \nServiceOpts\n,\n \nworkerFactoryInv\n \nWorkerFactoryInvoker\n)\n \n(\nService\n,\n \nerror\n)\n \n\n\n\n\n\nYou need to pass 2 different configuration items. The first is any options that setup the service, the second\nis a function that returns a factory. It allows you to create a fully customizable worker. These are separated\nas you can pass an empty set of options, and optional worker factory and the defaults will be used.\n\n\nService Options\n\n\ntype\n \nServiceOpts\n \nstruct\n \n{\n\n    \nLogger\n      \n*\nlog\n.\nLogger\n\n    \nInstrument\n  \nInstrument\n\n    \nExtractors\n  \nextractors\n\n    \nWorkerCount\n \nint\n\n\n}\n\n\n\n\n\n\nLogger\n\n\nThe logger is what the application uses to dump data that describes the crawller running. The default logs to \nstdout using the standard log package options.\n\n\nInstrument\n\n\nThe instrument is used to monitor both workers and jobs, as well as the rates for both network and CPU load \nthe workers are using (based on time). The default is to use an in memory instrument that stores the measurements\nin a go struct\n\n\nExtractors\n\n\nThe extractors are an interface. You can read more about the extractors in the next page, but you need to set \nthe custom extractors here for the workers to use. The default is to use an empty object that responds as nil \nfor all domains\n\n\nWorker Factory Invoker\n\n\ntype\n \nWorkerFactoryInvoker\n \nfunc\n(\nWorkerOpts\n)\n \nWorkerFactoryFunc\n\n\ntype\n \nWorkerFactoryFunc\n \nfunc\n(\nchan\n \nchan\n \n*\nCrawl\n)\n \nWorker\n\n\n\n\n\n\nThe Worker factory invoker is a function to add default WorkerOpts that it creates. This allows \na base implementation to not require applying the function to the application and have it work, \nbut at the same time allowing you to overide the function that the dispatcher calls to create the \nworker. Confusing yes, but also extensible - Definitly needs re-thinking.", 
             "title": "Crawler"
         }, 
         {
-            "location": "/extractors/", 
+            "location": "/crawler/#crawler", 
+            "text": "The core function of any web scraper is to go out and collect a webpage and perform some \nanalysis on it, hopefully returning meaning content. The crawler performs this specific \nfunction. By utilising a dispatch process for workers, with a process for custom extractors\nso that users of the system can customize the behaviour of the crawler, the core functions\nare abstracted from them in a way that enable the crawler is be scaled both horizontally \nand vertically to maximise throughput", 
+            "title": "Crawler"
+        }, 
+        {
+            "location": "/crawler/#public-interfaces", 
             "text": "", 
+            "title": "Public Interfaces"
+        }, 
+        {
+            "location": "/crawler/#service", 
+            "text": "The service interface has 3 methods,  Crawl ,  CrawlAsync ,  CrawlProgress . These methods recieve the \nrequest from another component (such as the schedular) to crawl a url. CrawlProgress will return the \ncurrent progress of a crawl, as it may be queued when underload. There is only one implementation of \nthe service, however you could in theory write your own.", 
+            "title": "Service"
+        }, 
+        {
+            "location": "/crawler/#transport", 
+            "text": "The transport receives a service and binds it to the outside world, translating the transport layer into \na call to the appropriate service method. There is currently only one implementation of the transport via\nthe nats messaging bus, however a http interface is in progress.", 
+            "title": "Transport"
+        }, 
+        {
+            "location": "/crawler/#client", 
+            "text": "The client mirrors the service, and connects the to transport. The transport then passes on the call \nto the service and returns the result. The client can be used by the schedulars, or by other tools\nto crawl webpages.", 
+            "title": "Client"
+        }, 
+        {
+            "location": "/crawler/#listener", 
+            "text": "The listener provides a tap on the crawl that receives complete crawls through the transport. The \ncurrent implementation is via nats", 
+            "title": "Listener"
+        }, 
+        {
+            "location": "/crawler/#instrument", 
+            "text": "The instrument interface provides a means to monitor the crawler, and the other components but included\nhere for simplicity. The interface has 3 methods, modeled off the prometheus monitoring tool, and can \nconnected to prometheus as an implementation of instrument.", 
+            "title": "Instrument"
+        }, 
+        {
+            "location": "/crawler/#worker", 
+            "text": "A worker DOES. It has a Start, Stop and Do method that performs work. You can customize the behaviour, but\nby default it crawls and extracts data from the url provided to the Do method.", 
+            "title": "Worker"
+        }, 
+        {
+            "location": "/crawler/#important-structs", 
+            "text": "There are a number of important structs that are used throughout the crawler.", 
+            "title": "Important Structs"
+        }, 
+        {
+            "location": "/crawler/#defaultworker", 
+            "text": "The base unit for crawling, it registers itself for work and then when chosen, will execute\na crawl.", 
+            "title": "DefaultWorker"
+        }, 
+        {
+            "location": "/crawler/#workeropts", 
+            "text": "The default options passed to a worker on creation through the worker factory. Includes\nlogger, instrument and extractors", 
+            "title": "WorkerOpts"
+        }, 
+        {
+            "location": "/crawler/#dispatcher", 
+            "text": "Receives work from the service and hands it off to workers that it is responsible for managing.", 
+            "title": "Dispatcher"
+        }, 
+        {
+            "location": "/crawler/#crawl", 
+            "text": "A data struct that holds all the information about a url received, the time it takes to complete \nand data that it collects", 
+            "title": "Crawl"
+        }, 
+        {
+            "location": "/crawler/#creating-the-service", 
+            "text": "The Default service has the following signature.   New ( opts   ServiceOpts ,   workerFactoryInv   WorkerFactoryInvoker )   ( Service ,   error )    You need to pass 2 different configuration items. The first is any options that setup the service, the second\nis a function that returns a factory. It allows you to create a fully customizable worker. These are separated\nas you can pass an empty set of options, and optional worker factory and the defaults will be used.", 
+            "title": "Creating the service"
+        }, 
+        {
+            "location": "/crawler/#service-options", 
+            "text": "type   ServiceOpts   struct   { \n     Logger        * log . Logger \n     Instrument    Instrument \n     Extractors    extractors \n     WorkerCount   int  }", 
+            "title": "Service Options"
+        }, 
+        {
+            "location": "/crawler/#logger", 
+            "text": "The logger is what the application uses to dump data that describes the crawller running. The default logs to \nstdout using the standard log package options.", 
+            "title": "Logger"
+        }, 
+        {
+            "location": "/crawler/#instrument_1", 
+            "text": "The instrument is used to monitor both workers and jobs, as well as the rates for both network and CPU load \nthe workers are using (based on time). The default is to use an in memory instrument that stores the measurements\nin a go struct", 
+            "title": "Instrument"
+        }, 
+        {
+            "location": "/crawler/#extractors", 
+            "text": "The extractors are an interface. You can read more about the extractors in the next page, but you need to set \nthe custom extractors here for the workers to use. The default is to use an empty object that responds as nil \nfor all domains", 
             "title": "Extractors"
+        }, 
+        {
+            "location": "/crawler/#worker-factory-invoker", 
+            "text": "type   WorkerFactoryInvoker   func ( WorkerOpts )   WorkerFactoryFunc  type   WorkerFactoryFunc   func ( chan   chan   * Crawl )   Worker   The Worker factory invoker is a function to add default WorkerOpts that it creates. This allows \na base implementation to not require applying the function to the application and have it work, \nbut at the same time allowing you to overide the function that the dispatcher calls to create the \nworker. Confusing yes, but also extensible - Definitly needs re-thinking.", 
+            "title": "Worker Factory Invoker"
+        }, 
+        {
+            "location": "/extractors/", 
+            "text": "Extractors\n\n\nAn extractor is an interface that is essentially a function, that takes a *goquery.Document \nand returns whatever data it likes as an empty interface{}. This will then be attached to the crawl object\nto be sent back to whoever wants it. \n\n\nThere are a few implementations of the extractor, but the main one is JSExtractor, which allows you to dynamically\nwrite your extractor in Javscript and are loaded at run time into the application.\n\n\nThe extractors interface is a a way for the application to get a list of extractors for a given hostname.\n\n\nThe JSExtractors implementation loads the extractors from a provided directory path\n\n\nExample\n\n\nthe following javascript code would live in a file called \nwww.domain.com.au\n\n\nvar\n \nextractor\n \n=\n \nfunction\n(\ndoc\n)\n \n{\n\n    \nresult\n \n:=\n \ndoc\n.\nFind\n(\n.listing-details__root\n).\nLength\n()\n\n    \nif\n \n(\nresult\n \n==\n \n0\n)\n \n{\n\n        \nfmt\n.\nPrintln\n(\nno data found\n)\n\n        \nreturn\n \nnil\n,\n \nnil\n\n    \n}\n\n\n    \nvar\n \ndata\n \n=\n \n{}\n\n    \ndata\n.\ntitle\n \n=\n \ndoc\n.\nFind\n(\nh1\n).\nText\n()\n\n    \ndatasummaryTitle\n \n=\n \ndoc\n.\nFind\n(\n.listing-details__summary-title\n).\nText\n()\n\n    \ndata\n.\nfeatures\n \n=\n \ndoc\n.\nFind\n(\n.listing-details__summary-right-column .property-feature__feature-text-container\n).\nMap\n(\nfunction\n(\ni\n,\n \nsel\n)\n \n{\n \nreturn\n \nsel\n.\nText\n()\n \n})\n\n    \ndata\n.\ncalloutDetails\n \n=\n \ndoc\n.\nFind\n(\n.listing-details__summary-strip-items\n).\nMap\n(\nfunction\n(\ni\n,\n \nsel\n)\n \n{\n \nreturn\n \nsel\n.\nText\n()\n \n})\n\n    \ndata\n.\ndescription\n \n=\n \ndoc\n.\nFind\n(\n.listing-details__description\n).\nMap\n(\nfunction\n(\ni\n,\n \nsel\n)\n \n{\n \nreturn\n \nsel\n.\nText\n()\n \n})\n\n\n    \nreturn\n \ndata\n\n\n}\n\n\n\n\n\n\n\n\nNote\n\n\nMore information can be found at the goquery documentation page \nhere", 
+            "title": "Extractors"
+        }, 
+        {
+            "location": "/extractors/#extractors", 
+            "text": "An extractor is an interface that is essentially a function, that takes a *goquery.Document \nand returns whatever data it likes as an empty interface{}. This will then be attached to the crawl object\nto be sent back to whoever wants it.   There are a few implementations of the extractor, but the main one is JSExtractor, which allows you to dynamically\nwrite your extractor in Javscript and are loaded at run time into the application.  The extractors interface is a a way for the application to get a list of extractors for a given hostname.  The JSExtractors implementation loads the extractors from a provided directory path", 
+            "title": "Extractors"
+        }, 
+        {
+            "location": "/extractors/#example", 
+            "text": "the following javascript code would live in a file called  www.domain.com.au  var   extractor   =   function ( doc )   { \n     result   :=   doc . Find ( .listing-details__root ). Length () \n     if   ( result   ==   0 )   { \n         fmt . Println ( no data found ) \n         return   nil ,   nil \n     } \n\n     var   data   =   {} \n     data . title   =   doc . Find ( h1 ). Text () \n     datasummaryTitle   =   doc . Find ( .listing-details__summary-title ). Text () \n     data . features   =   doc . Find ( .listing-details__summary-right-column .property-feature__feature-text-container ). Map ( function ( i ,   sel )   {   return   sel . Text ()   }) \n     data . calloutDetails   =   doc . Find ( .listing-details__summary-strip-items ). Map ( function ( i ,   sel )   {   return   sel . Text ()   }) \n     data . description   =   doc . Find ( .listing-details__description ). Map ( function ( i ,   sel )   {   return   sel . Text ()   }) \n\n     return   data  }    Note  More information can be found at the goquery documentation page  here", 
+            "title": "Example"
         }, 
         {
             "location": "/schedular/", 
